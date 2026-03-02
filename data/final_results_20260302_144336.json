@@ -1,0 +1,440 @@
+[
+  {
+    "label": "dialog",
+    "start": 12,
+    "end": 14,
+    "length": 3
+  },
+  {
+    "label": "choice",
+    "start": 15,
+    "end": 25,
+    "length": 11
+  },
+  {
+    "label": "dialog",
+    "start": 75,
+    "end": 77,
+    "length": 3
+  },
+  {
+    "label": "choice",
+    "start": 78,
+    "end": 84,
+    "length": 7
+  },
+  {
+    "label": "choice",
+    "start": 137,
+    "end": 149,
+    "length": 13
+  },
+  {
+    "label": "notification",
+    "start": 218,
+    "end": 221,
+    "length": 4
+  },
+  {
+    "label": "dialog",
+    "start": 228,
+    "end": 234,
+    "length": 7
+  },
+  {
+    "label": "choice",
+    "start": 235,
+    "end": 254,
+    "length": 20
+  },
+  {
+    "label": "dialog",
+    "start": 259,
+    "end": 272,
+    "length": 14
+  },
+  {
+    "label": "boss-kill",
+    "start": 275,
+    "end": 279,
+    "length": 5
+  },
+  {
+    "label": "notification",
+    "start": 280,
+    "end": 282,
+    "length": 3
+  },
+  {
+    "label": "choice",
+    "start": 315,
+    "end": 327,
+    "length": 13
+  },
+  {
+    "label": "choice",
+    "start": 390,
+    "end": 394,
+    "length": 5
+  },
+  {
+    "label": "dialog",
+    "start": 452,
+    "end": 459,
+    "length": 8
+  },
+  {
+    "label": "choice",
+    "start": 602,
+    "end": 608,
+    "length": 7
+  },
+  {
+    "label": "dialog",
+    "start": 636,
+    "end": 652,
+    "length": 17
+  },
+  {
+    "label": "boss-fight",
+    "start": 655,
+    "end": 799,
+    "length": 145
+  },
+  {
+    "label": "boss-kill",
+    "start": 816,
+    "end": 828,
+    "length": 13
+  },
+  {
+    "label": "choice",
+    "start": 861,
+    "end": 871,
+    "length": 11
+  },
+  {
+    "label": "enter-level",
+    "start": 886,
+    "end": 895,
+    "length": 10
+  },
+  {
+    "label": "notification",
+    "start": 905,
+    "end": 910,
+    "length": 6
+  },
+  {
+    "label": "notification",
+    "start": 921,
+    "end": 929,
+    "length": 9
+  },
+  {
+    "label": "choice",
+    "start": 932,
+    "end": 953,
+    "length": 22
+  },
+  {
+    "label": "boss-kill",
+    "start": 964,
+    "end": 966,
+    "length": 3
+  },
+  {
+    "label": "notification",
+    "start": 969,
+    "end": 972,
+    "length": 4
+  },
+  {
+    "label": "dialog",
+    "start": 1019,
+    "end": 1021,
+    "length": 3
+  },
+  {
+    "label": "choice",
+    "start": 1022,
+    "end": 1027,
+    "length": 6
+  },
+  {
+    "label": "boss-fight",
+    "start": 1049,
+    "end": 1080,
+    "length": 32
+  },
+  {
+    "label": "boss-kill",
+    "start": 1081,
+    "end": 1087,
+    "length": 7
+  },
+  {
+    "label": "notification",
+    "start": 1088,
+    "end": 1093,
+    "length": 6
+  },
+  {
+    "label": "choice",
+    "start": 1098,
+    "end": 1117,
+    "length": 20
+  },
+  {
+    "label": "dialog",
+    "start": 1215,
+    "end": 1269,
+    "length": 55
+  },
+  {
+    "label": "choice",
+    "start": 1270,
+    "end": 1276,
+    "length": 7
+  },
+  {
+    "label": "choice",
+    "start": 1356,
+    "end": 1365,
+    "length": 10
+  },
+  {
+    "label": "dialog",
+    "start": 1387,
+    "end": 1404,
+    "length": 18
+  },
+  {
+    "label": "boss-fight",
+    "start": 1406,
+    "end": 1543,
+    "length": 138
+  },
+  {
+    "label": "boss-kill",
+    "start": 1571,
+    "end": 1588,
+    "length": 18
+  },
+  {
+    "label": "choice",
+    "start": 1609,
+    "end": 1624,
+    "length": 16
+  },
+  {
+    "label": "enter-level",
+    "start": 1634,
+    "end": 1644,
+    "length": 11
+  },
+  {
+    "label": "notification",
+    "start": 1652,
+    "end": 1657,
+    "length": 6
+  },
+  {
+    "label": "choice",
+    "start": 1744,
+    "end": 1756,
+    "length": 13
+  },
+  {
+    "label": "choice",
+    "start": 1853,
+    "end": 1865,
+    "length": 13
+  },
+  {
+    "label": "dialog",
+    "start": 1896,
+    "end": 1915,
+    "length": 20
+  },
+  {
+    "label": "choice",
+    "start": 1916,
+    "end": 1928,
+    "length": 13
+  },
+  {
+    "label": "choice",
+    "start": 2037,
+    "end": 2052,
+    "length": 16
+  },
+  {
+    "label": "notification",
+    "start": 2073,
+    "end": 2077,
+    "length": 5
+  },
+  {
+    "label": "boss-fight",
+    "start": 2106,
+    "end": 2109,
+    "length": 4
+  },
+  {
+    "label": "dialog",
+    "start": 2144,
+    "end": 2149,
+    "length": 6
+  },
+  {
+    "label": "choice",
+    "start": 2151,
+    "end": 2161,
+    "length": 11
+  },
+  {
+    "label": "choice",
+    "start": 2269,
+    "end": 2273,
+    "length": 5
+  },
+  {
+    "label": "boss-kill",
+    "start": 2281,
+    "end": 2291,
+    "length": 11
+  },
+  {
+    "label": "boss-fight",
+    "start": 2292,
+    "end": 2405,
+    "length": 114
+  },
+  {
+    "label": "notification",
+    "start": 2420,
+    "end": 2425,
+    "length": 6
+  },
+  {
+    "label": "boss-kill",
+    "start": 2426,
+    "end": 2452,
+    "length": 27
+  },
+  {
+    "label": "enter-level",
+    "start": 2491,
+    "end": 2501,
+    "length": 11
+  },
+  {
+    "label": "boss-kill",
+    "start": 2502,
+    "end": 2504,
+    "length": 3
+  },
+  {
+    "label": "choice",
+    "start": 2512,
+    "end": 2543,
+    "length": 32
+  },
+  {
+    "label": "notification",
+    "start": 2567,
+    "end": 2572,
+    "length": 6
+  },
+  {
+    "label": "boss-kill",
+    "start": 2904,
+    "end": 2906,
+    "length": 3
+  },
+  {
+    "label": "dialog",
+    "start": 2918,
+    "end": 2930,
+    "length": 13
+  },
+  {
+    "label": "choice",
+    "start": 2931,
+    "end": 2941,
+    "length": 11
+  },
+  {
+    "label": "boss-kill",
+    "start": 2970,
+    "end": 2973,
+    "length": 4
+  },
+  {
+    "label": "notification",
+    "start": 2978,
+    "end": 2984,
+    "length": 7
+  },
+  {
+    "label": "dialog",
+    "start": 2993,
+    "end": 3011,
+    "length": 19
+  },
+  {
+    "label": "boss-fight",
+    "start": 3013,
+    "end": 3134,
+    "length": 122
+  },
+  {
+    "label": "boss-fight",
+    "start": 3148,
+    "end": 3170,
+    "length": 23
+  },
+  {
+    "label": "dialog",
+    "start": 3171,
+    "end": 3175,
+    "length": 5
+  },
+  {
+    "label": "boss-fight",
+    "start": 3176,
+    "end": 3276,
+    "length": 101
+  },
+  {
+    "label": "dialog",
+    "start": 3284,
+    "end": 3301,
+    "length": 18
+  },
+  {
+    "label": "boss-fight",
+    "start": 3304,
+    "end": 3308,
+    "length": 5
+  },
+  {
+    "label": "boss-kill",
+    "start": 3309,
+    "end": 3323,
+    "length": 15
+  },
+  {
+    "label": "notification",
+    "start": 3324,
+    "end": 3327,
+    "length": 4
+  },
+  {
+    "label": "victory",
+    "start": 3329,
+    "end": 3367,
+    "length": 39
+  }
+]
