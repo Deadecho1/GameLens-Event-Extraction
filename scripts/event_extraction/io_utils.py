@@ -13,12 +13,12 @@ def _safe_int(x: Any, name: str) -> int:
     return x
 
 
-def load_spans(path: Path) -> List[Interval]:
+def load_intervals(path: Path) -> List[Interval]:
     raw = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(raw, list):
         raise ValueError("Input JSON must be a list of objects")
 
-    spans: List[Interval] = []
+    intervals: List[Interval] = []
     for i, obj in enumerate(raw):
         if not isinstance(obj, dict):
             raise ValueError(f"Item {i} is not an object")
@@ -28,9 +28,9 @@ def load_spans(path: Path) -> List[Interval]:
         end = _safe_int(obj.get("end"), "end")
         length = _safe_int(obj.get("length"), "length")
 
-        spans.append(Interval(label=label, start=start, end=end, length=length))
+        intervals.append(Interval(label=label, start=start, end=end, length=length))
 
-    return spans
+    return intervals
 
 
 def write_json(path: Path, payload: dict) -> None:

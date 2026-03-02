@@ -16,12 +16,12 @@ TARGET_LABELS = {
 }
 
 
-def filter_target_spans(spans: List[Interval]) -> List[Interval]:
-    return [s for s in spans if s.label in TARGET_LABELS]
+def filter_target_intervals(intervals: List[Interval]) -> List[Interval]:
+    return [s for s in intervals if s.label in TARGET_LABELS]
 
 
 def add_context(
-    span: Interval,
+    interval: Interval,
     pre: int,
     post: int,
     min_idx: int = 0,
@@ -31,12 +31,12 @@ def add_context(
     post_idxs: List[int] = []
 
     for i in range(pre):
-        j = span.start - (pre - i)
+        j = interval.start - (pre - i)
         if j >= min_idx and (max_idx is None or j <= max_idx):
             pre_idxs.append(j)
 
     for i in range(post):
-        j = span.end + 1 + i
+        j = interval.end + 1 + i
         if j >= min_idx and (max_idx is None or j <= max_idx):
             post_idxs.append(j)
 
