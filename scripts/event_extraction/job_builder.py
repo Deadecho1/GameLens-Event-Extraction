@@ -1,46 +1,18 @@
 from __future__ import annotations
-
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Any
+from typing import List
 
 from .models import Interval, ExtractionJob
-from .keyframes import KeyframePicker
+from .timeline import Timeline
+from .policies import PolicyRegistry
 
 
 TARGET_LABELS = {
     "choice",
     "enter-level",
-    "exit-level",
     "victory",
     "boss-fight",
 }
-
-
-def filter_target_intervals(intervals: List[Interval]) -> List[Interval]:
-    return [s for s in intervals if s.label in TARGET_LABELS]
-
-
-def add_context(
-    interval: Interval,
-    pre: int,
-    post: int,
-    min_idx: int = 0,
-    max_idx: Optional[int] = None,
-) -> Tuple[List[int], List[int]]:
-    pre_idxs: List[int] = []
-    post_idxs: List[int] = []
-
-    for i in range(pre):
-        j = interval.start - (pre - i)
-        if j >= min_idx and (max_idx is None or j <= max_idx):
-            pre_idxs.append(j)
-
-    for i in range(post):
-        j = interval.end + 1 + i
-        if j >= min_idx and (max_idx is None or j <= max_idx):
-            post_idxs.append(j)
-
-    return pre_idxs, post_idxs
 
 
 def resolve_frame_path(images_dir: Path, idx: int) -> str:
@@ -56,38 +28,45 @@ def resolve_frame_path(images_dir: Path, idx: int) -> str:
     return str((images_dir / f"{idx}.jpg").resolve())
 
 
-def build_jobs(spans: List[Interval], run_id: str, images_dir: Path) -> List[ExtractionJob]:
+def build_jobs(
+    all_intervals: List[Interval],
+    run_id: str,
+    images_dir: Path,
+) -> List[ExtractionJob]:
+
+    timeline = Timeline(all_intervals)
+    registry = PolicyRegistry()
+
+    targets = [
+        i for i in all_intervals
+        if i.label in TARGET_LABELS
+    ]
+
+    targets = sorted(targets, key=lambda i: (i.start, i.end))
+
     jobs: List[ExtractionJob] = []
 
-    picker = KeyframePicker()
-    for n, s in enumerate(spans):
-        keyframes, params = picker.pick(s)
+    for n, interval in enumerate(targets):
 
-        if s.label in ("enter-level", "exit-level"):
-            pre, post = 2, 2
-        elif s.label == "boss-fight":
-            pre, post = 1, 1
-        else:
-            pre, post = 1, 1
+        policy = registry.get(interval.label)
+        keyframes, linked, params = policy.build(interval, timeline)
 
-        pre_ctx, post_ctx = add_context(s, pre=pre, post=post)
-
-        job_id = f"{run_id}:{s.label}:{s.start}-{s.end}:{n}"
+        job_id = f"{run_id}:{interval.label}:{interval.start}-{interval.end}:{n}"
 
         jobs.append(
             ExtractionJob(
                 job_id=job_id,
                 run_id=run_id,
-                label=s.label,
-                start=s.start,
-                end=s.end,
-                length=s.length,
+                label=interval.label,
+                start=interval.start,
+                end=interval.end,
+                length=interval.length,
                 keyframes=keyframes,
-                pre_context=pre_ctx,
-                post_context=post_ctx,
-                keyframe_paths=[resolve_frame_path(images_dir, i) for i in keyframes],
-                pre_context_paths=[resolve_frame_path(images_dir, i) for i in pre_ctx],
-                post_context_paths=[resolve_frame_path(images_dir, i) for i in post_ctx],
+                keyframe_paths=[
+                    resolve_frame_path(images_dir, k)
+                    for k in keyframes
+                ],
+                linked=linked,
                 params=params,
             )
         )

@@ -8,7 +8,6 @@ from .models import ExtractionJob
 from .workers.local_workers import LOCAL_WORKERS
 from .workers.remote_client import post_json, REMOTE_ENDPOINTS
 
-
 def run_local(jobs: List[ExtractionJob], max_workers: int) -> List[Dict[str, Any]]:
     results: List[Dict[str, Any]] = []
 

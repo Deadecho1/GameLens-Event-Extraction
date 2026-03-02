@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 from dataclasses import dataclass
 from typing import Any, Dict, List
 
@@ -18,6 +17,15 @@ class Interval:
 
 
 @dataclass
+class LinkedInterval:
+    role: str
+    label: str
+    start: int
+    end: int
+    length: int
+
+
+@dataclass
 class ExtractionJob:
     job_id: str
     run_id: str
@@ -27,11 +35,8 @@ class ExtractionJob:
     length: int
 
     keyframes: List[int]
-    pre_context: List[int]
-    post_context: List[int]
-
     keyframe_paths: List[str]
-    pre_context_paths: List[str]
-    post_context_paths: List[str]
+
+    linked: List[LinkedInterval]
 
     params: Dict[str, Any]
