@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from typing import Any, List
 
-from .models import Span
+from .models import Interval
 
 
 def _safe_int(x: Any, name: str) -> int:
@@ -13,12 +13,12 @@ def _safe_int(x: Any, name: str) -> int:
     return x
 
 
-def load_spans(path: Path) -> List[Span]:
+def load_spans(path: Path) -> List[Interval]:
     raw = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(raw, list):
         raise ValueError("Input JSON must be a list of objects")
 
-    spans: List[Span] = []
+    spans: List[Interval] = []
     for i, obj in enumerate(raw):
         if not isinstance(obj, dict):
             raise ValueError(f"Item {i} is not an object")
@@ -28,7 +28,7 @@ def load_spans(path: Path) -> List[Span]:
         end = _safe_int(obj.get("end"), "end")
         length = _safe_int(obj.get("length"), "length")
 
-        spans.append(Span(label=label, start=start, end=end, length=length))
+        spans.append(Interval(label=label, start=start, end=end, length=length))
 
     return spans
 

@@ -5,7 +5,7 @@ from typing import Any, Dict, List
 
 
 @dataclass(frozen=True)
-class Span:
+class Interval:
     label: str
     start: int  # inclusive
     end: int    # inclusive

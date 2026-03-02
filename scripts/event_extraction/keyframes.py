@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, List, Tuple, Protocol
 
-from .models import Span
+from .models import Interval
 
 
 # ----------------------------
@@ -11,7 +11,7 @@ from .models import Span
 # ----------------------------
 
 class KeyframePolicy(Protocol):
-    def pick(self, span: Span) -> Tuple[List[int], Dict[str, Any]]:
+    def pick(self, span: Interval) -> Tuple[List[int], Dict[str, Any]]:
         ...
 
 
@@ -38,7 +38,7 @@ class ChoicePolicy:
     """Choice screens are stable: sample a few frames."""
     max_full: int = 5
 
-    def pick(self, span: Span) -> Tuple[List[int], Dict[str, Any]]:
+    def pick(self, span: Interval) -> Tuple[List[int], Dict[str, Any]]:
         idxs = span.frame_indices()
         if not idxs:
             return [], {}
@@ -54,7 +54,7 @@ class TransitionPolicy:
     """Enter/exit level transitions: early frames matter most."""
     extra_offset: int = 2
 
-    def pick(self, span: Span) -> Tuple[List[int], Dict[str, Any]]:
+    def pick(self, span: Interval) -> Tuple[List[int], Dict[str, Any]]:
         idxs = span.frame_indices()
         if not idxs:
             return [], {}
@@ -67,7 +67,7 @@ class TransitionPolicy:
 @dataclass(frozen=True)
 class VictoryPolicy:
     """Victory screens: mid + end are usually best summary."""
-    def pick(self, span: Span) -> Tuple[List[int], Dict[str, Any]]:
+    def pick(self, span: Interval) -> Tuple[List[int], Dict[str, Any]]:
         idxs = span.frame_indices()
         if not idxs:
             return [], {}
@@ -83,7 +83,7 @@ class BossFightPolicy:
     """Boss fights can be long: sparse samples + periodic frames."""
     sample_every: int = 30
 
-    def pick(self, span: Span) -> Tuple[List[int], Dict[str, Any]]:
+    def pick(self, span: Interval) -> Tuple[List[int], Dict[str, Any]]:
         idxs = span.frame_indices()
         if not idxs:
             return [], {}
@@ -106,7 +106,7 @@ class BossFightPolicy:
 @dataclass(frozen=True)
 class DefaultPolicy:
     """Fallback for unknown labels."""
-    def pick(self, span: Span) -> Tuple[List[int], Dict[str, Any]]:
+    def pick(self, span: Interval) -> Tuple[List[int], Dict[str, Any]]:
         idxs = span.frame_indices()
         if not idxs:
             return [], {}
@@ -133,7 +133,7 @@ class KeyframePicker:
             "boss-fight": BossFightPolicy(sample_every=30),
         }
 
-    def pick(self, span: Span) -> Tuple[List[int], Dict[str, Any]]:
+    def pick(self, span: Interval) -> Tuple[List[int], Dict[str, Any]]:
         policy = self._policies.get(span.label, self._default)
         return policy.pick(span)
 

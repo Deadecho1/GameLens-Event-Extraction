@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 
-from .models import Span, ExtractionJob
+from .models import Interval, ExtractionJob
 from .keyframes import KeyframePicker
 
 
@@ -16,12 +16,12 @@ TARGET_LABELS = {
 }
 
 
-def filter_target_spans(spans: List[Span]) -> List[Span]:
+def filter_target_spans(spans: List[Interval]) -> List[Interval]:
     return [s for s in spans if s.label in TARGET_LABELS]
 
 
 def add_context(
-    span: Span,
+    span: Interval,
     pre: int,
     post: int,
     min_idx: int = 0,
@@ -56,7 +56,7 @@ def resolve_frame_path(images_dir: Path, idx: int) -> str:
     return str((images_dir / f"{idx}.jpg").resolve())
 
 
-def build_jobs(spans: List[Span], run_id: str, images_dir: Path) -> List[ExtractionJob]:
+def build_jobs(spans: List[Interval], run_id: str, images_dir: Path) -> List[ExtractionJob]:
     jobs: List[ExtractionJob] = []
 
     picker = KeyframePicker()
